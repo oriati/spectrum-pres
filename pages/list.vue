@@ -20,11 +20,10 @@ import { mapGetters } from 'vuex'
 import Gallery from '../components/Gallery'
 
 export default {
+  name: 'ItemList'
   async asyncData({ store }) {
-    await store.dispatch('getAllItems')
-  },
-  computed: {
-    ...mapGetters(['productList'])
+    const items = await store.dispatch('getAllItems')
+    return {productList: items}
   },
   components: {
     spGallery: Gallery
